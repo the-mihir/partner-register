@@ -1,0 +1,46 @@
+/* Partner List Table Styles */
+.wp-list-table .column-sl { width: 50px; }
+.wp-list-table .column-actions { width: 200px; }
+
+/* Partner Form Styles */
+.partner-form {
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.partner-form .form-table th {
+    width: 200px;
+}
+
+.partner-form .form-table td {
+    padding: 15px 10px;
+}
+
+.partner-form .regular-text {
+    width: 100%;
+    max-width: 400px;
+}
+
+.partner-form textarea {
+    width: 100%;
+    max-width: 600px;
+}
+
+.current-logo {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+.current-logo img {
+    max-width: 200px;
+    height: auto;
+    display: block;
+}
+
+/* Message Styles */
+.updated {
+    margin: 15px 0;
+}
