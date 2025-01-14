@@ -3,7 +3,7 @@
 Plugin Name: Partner Manager
 Description: A plugin to manage and display partners.
 Version: 1.0
-Author: Your Name
+Author: Mihir Das
 */
 
 if (!defined('ABSPATH')) {
