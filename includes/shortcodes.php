@@ -3,83 +3,89 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Shortcode for Partner Cards
+// Shortcode for Partner Cards Grid
 function partner_cards_shortcode() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'partners';
-    $partners = $wpdb->get_results("SELECT * FROM $table_name ORDER BY company_name ASC");
+    $partners = $wpdb->get_results("SELECT * FROM $table_name");
 
-    ob_start();
-    ?>
-    <div class="partner-cards-container">
-        <?php foreach ($partners as $partner): ?>
-            <div class="partner-card" data-partner-id="<?php echo $partner->id; ?>">
-                <div class="partner-card-image">
-                    <?php if (!empty($partner->logo_url)): ?>
-                        <img src="<?php echo esc_url($partner->logo_url); ?>" alt="<?php echo esc_attr($partner->company_name); ?>">
-                    <?php endif; ?>
-                </div>
-                <h3 class="partner-card-title"><?php echo esc_html($partner->company_name); ?></h3>
-            </div>
-        <?php endforeach; ?>
-    </div>
-
-    <!-- Modal for Partner Details -->
-    <div id="partner-modal" class="partner-modal">
-        <div class="partner-modal-content">
-            <span class="partner-modal-close">&times;</span>
-            <div id="partner-modal-body"></div>
-        </div>
-    </div>
-    <?php
-    return ob_get_clean();
+    $output = '<div class="partner-cards">';
+    foreach ($partners as $partner) {
+        $output .= '<div class="partner-card">';
+        // Use company name in URL instead of ID
+        $partner_url = add_query_arg('partner', urlencode($partner->company_name), site_url('/partner-details'));
+        $output .= '<a href="' . esc_url($partner_url) . '">';
+        $output .= '<div class="partner-card-image">';
+        if (!empty($partner->logo_url)) {
+            $output .= '<img src="' . esc_url($partner->logo_url) . '" alt="' . esc_attr($partner->company_name) . '">';
+        }
+        $output .= '</div>';
+        $output .= '<h3 class="partner-card-title">' . esc_html($partner->company_name) . '</h3>';
+        $output .= '</a>';
+        $output .= '</div>';
+    }
+    $output .= '</div>';
+    return $output;
 }
 add_shortcode('partner_cards', 'partner_cards_shortcode');
 
-// Shortcode for Partner Details
-function partner_details_shortcode($atts) {
-    $atts = shortcode_atts(array(
-        'id' => 0
-    ), $atts);
 
-    if (empty($atts['id'])) return '';
+
+// Shortcode for Single Partner Details
+function partner_details_shortcode() {
+    // Get company name from URL
+    $company_name = isset($_GET['partner']) ? urldecode($_GET['partner']) : '';
+    
+    if (empty($company_name)) {
+        return '<p>No partner selected.</p>';
+    }
 
     global $wpdb;
     $table_name = $wpdb->prefix . 'partners';
-    $partner = $wpdb->get_row($wpdb->prepare("SELECT * FROM $table_name WHERE id = %d", $atts['id']));
+    
+    // Query by company name instead of ID
+    $partner = $wpdb->get_row($wpdb->prepare(
+        "SELECT * FROM $table_name WHERE company_name = %s",
+        $company_name
+    ));
 
-    if (!$partner) return '';
+    if (!$partner) {
+        return '<p>Partner not found.</p>';
+    }
 
     ob_start();
     ?>
-    <div class="partner-details">
+    <div class="partner-details-page">
         <div class="partner-header">
             <?php if (!empty($partner->logo_url)): ?>
                 <div class="partner-logo">
-                    <img src="<?php echo esc_url($partner->logo_url); ?>" alt="<?php echo esc_attr($partner->company_name); ?>">
+                    <img src="<?php echo esc_url($partner->logo_url); ?>" 
+                         alt="<?php echo esc_attr($partner->company_name); ?>">
                 </div>
             <?php endif; ?>
-            <h2><?php echo esc_html($partner->company_name); ?></h2>
+            <h1 class="partner-title"><?php echo esc_html($partner->company_name); ?></h1>
             <?php if (!empty($partner->company_subheading)): ?>
-                <h3><?php echo esc_html($partner->company_subheading); ?></h3>
+                <p class="partner-subtitle"><?php echo esc_html($partner->company_subheading); ?></p>
             <?php endif; ?>
         </div>
 
-        <?php if (!empty($partner->tags)): ?>
-            <div class="partner-tags">
-                <?php 
-                $tags = array_map('trim', explode(',', $partner->tags));
-                foreach ($tags as $tag): ?>
-                    <span class="partner-tag"><?php echo esc_html($tag); ?></span>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
+        <div class="partner-content">
+            <?php if (!empty($partner->tags)): ?>
+                <div class="partner-tags">
+                    <?php 
+                    $tags = array_map('trim', explode(',', $partner->tags));
+                    foreach ($tags as $tag): ?>
+                        <span class="partner-tag"><?php echo esc_html($tag); ?></span>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-        <?php if (!empty($partner->about_partner)): ?>
-            <div class="partner-about">
-                <?php echo wpautop(esc_html($partner->about_partner)); ?>
-            </div>
-        <?php endif; ?>
+            <?php if (!empty($partner->about_partner)): ?>
+                <div class="partner-about">
+                    <?php echo wpautop(esc_html($partner->about_partner)); ?>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
     <?php
     return ob_get_clean();
