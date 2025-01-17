@@ -2,46 +2,42 @@
     <h1>Add New Partner</h1>
 
     <?php if (isset($_POST['submit'])) {
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'partners';
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'partners';
 
-        $data = array(
-            'partner_name' => sanitize_text_field($_POST['partner_name']),
-            'offering_area_name' => sanitize_text_field($_POST['offering_area_name']),
-            'offer_heading' => sanitize_text_field($_POST['offer_heading']),
-            'subheading' => sanitize_textarea_field($_POST['subheading']),
-            'tags' => sanitize_textarea_field($_POST['tags']),
-            'about_partner' => sanitize_textarea_field($_POST['about_partner']),
-            'box_heading_one' => sanitize_text_field($_POST['box_heading_one']),
-            'box_text_one' => sanitize_textarea_field($_POST['box_text_one']),
-            'box_heading_two' => sanitize_text_field($_POST['box_heading_two']), 
-            'box_text_two' => sanitize_textarea_field($_POST['box_text_two']),
-            'hero_image_one' => sanitize_text_field($_POST['hero_image_one']),
-            'hero_image_two' => sanitize_text_field($_POST['hero_image_two']),
-            'facilities' => sanitize_textarea_field($_POST['facilities']),
-            'offering_text' => sanitize_textarea_field($_POST['offering_text']),
-            'offer_box_heading_one' => sanitize_text_field($_POST['offer_box_heading_one']),
-            'offer_box_text_one' => sanitize_textarea_field($_POST['offer_box_text_one']),
-            'offer_box_heading_two' => sanitize_text_field($_POST['offer_box_heading_two']),
-            'offer_box_text_two' => sanitize_textarea_field($_POST['offer_box_text_two']),
-            'offer_image_one' => sanitize_text_field($_POST['offer_image_one']),
-            'offer_image_two' => sanitize_text_field($_POST['offer_image_two']),
-            'benefits' => sanitize_textarea_field($_POST['benefits']),
-            'services' => sanitize_textarea_field($_POST['services']),
-            'hotel_name' => sanitize_text_field($_POST['hotel_name']),
-            'address' => sanitize_textarea_field($_POST['address']),
-            'offer_stay_total_night' => intval($_POST['offer_stay_total_night']),
-            'price' => floatval($_POST['price']),
-            'hotel_info_text' => sanitize_textarea_field($_POST['hotel_info_text'])
+    $data = array(
+        'partner_name' => sanitize_text_field($_POST['partner_name']),
+        'offering_area_name' => sanitize_text_field($_POST['offering_area_name']),
+        'offer_heading' => sanitize_text_field($_POST['offer_heading']),
+        'subheading' => sanitize_textarea_field($_POST['subheading']),
+        'tags' => sanitize_textarea_field($_POST['tags']),
+        'about_partner' => sanitize_textarea_field($_POST['about_partner']),
+        'box_heading_one' => sanitize_text_field($_POST['box_heading_one']),
+        'box_text_one' => sanitize_textarea_field($_POST['box_text_one']),
+        'box_heading_two' => sanitize_text_field($_POST['box_heading_two']),
+        'box_text_two' => sanitize_textarea_field($_POST['box_text_two']),
+        'hero_image_one' => sanitize_text_field($_POST['hero_image_one']),
+        'hero_image_two' => sanitize_text_field($_POST['hero_image_two']),
+        'facilities' => sanitize_textarea_field($_POST['facilities']),
+        'offering_text' => sanitize_textarea_field($_POST['offering_text']),
+        'offer_box_heading_one' => sanitize_text_field($_POST['offer_box_heading_one']),
+        'offer_box_text_one' => sanitize_textarea_field($_POST['offer_box_text_one']),
+        'offer_box_heading_two' => sanitize_text_field($_POST['offer_box_heading_two']),
+        'offer_box_text_two' => sanitize_textarea_field($_POST['offer_box_text_two']),
+        'offer_image_one' => sanitize_text_field($_POST['offer_image_one']),
+        'offer_image_two' => sanitize_text_field($_POST['offer_image_two']),
+        'benefits' => sanitize_textarea_field($_POST['benefits']),
+        'services' => sanitize_textarea_field($_POST['services']),
         );
 
-        $wpdb->insert($table_name, $data);
+    $wpdb->insert($table_name, $data);
 
-        if ($wpdb->insert_id) {
-            wp_redirect(admin_url('admin.php?page=partner-content-management&message=added'));
-            exit;
-        }
-    } ?>
+    if ($wpdb->insert_id) {
+        wp_redirect(admin_url('admin.php?page=partner-content-management&message=added'));
+        exit;
+    }
+}
+?>
 
     <form method="post" class="mt-4 border rounded-3 p-4" enctype="multipart/form-data">
         <div class="container-fluid p-4">

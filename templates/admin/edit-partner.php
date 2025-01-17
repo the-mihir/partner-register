@@ -19,10 +19,10 @@ if (!$partner) {
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_partner'])) {
+    // Prepare $data array with sanitized form data, matching the database schema
     $data = array(
         'partner_name' => sanitize_text_field($_POST['partner_name']),
         'offering_area_name' => sanitize_text_field($_POST['offering_area_name']),
-        'offer_heading' => sanitize_text_field($_POST['offer_heading']),
         'offer_heading' => sanitize_text_field($_POST['offer_heading']),
         'subheading' => sanitize_textarea_field($_POST['subheading']),
         'tags' => sanitize_textarea_field($_POST['tags']),
@@ -35,10 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_partner'])) {
         'offer_box_heading_one' => sanitize_text_field($_POST['offer_box_heading_one']),
         'offer_box_heading_two' => sanitize_text_field($_POST['offer_box_heading_two']),
         'offer_box_text_one' => sanitize_textarea_field($_POST['offer_box_text_one']),
-        'offer_box_text_two' => sanitize_textarea_field($_POST['offer_box_text_two'])
+        'offer_box_text_two' => sanitize_textarea_field($_POST['offer_box_text_two']),
+
+        // Dynamic fields for facilities, benefits, and services (as JSON-encoded arrays)
+        'facilities' => isset($_POST['facilities']) ? json_encode(array_map('sanitize_text_field', $_POST['facilities'])) : json_encode([]),
+        'benefits' => isset($_POST['benefits']) ? json_encode(array_map('sanitize_text_field', $_POST['benefits'])) : json_encode([]),
+
+        // Nested services structure with sanitized fields and encoded as JSON
+        'services' => isset($_POST['services']) ? json_encode(array_map(function($service) {
+            return array(
+                'name' => sanitize_text_field($service['name']),
+                'heading' => sanitize_text_field($service['heading']),
+                'address' => sanitize_text_field($service['address']),
+                'facilities' => isset($service['facilities']) ? json_encode(array_map('sanitize_text_field', $service['facilities'])) : json_encode([]),
+                'price' => sanitize_text_field($service['price']),
+                'brief' => sanitize_textarea_field($service['brief']),
+            );
+        }, $_POST['services'])) : json_encode([]),
     );
 
-    // Handle file uploads
+    // Handle file uploads for images (hero and offer images)
     $upload_fields = ['hero_image_one', 'hero_image_two', 'offer_image_one', 'offer_image_two'];
     foreach ($upload_fields as $field) {
         if (!empty($_FILES[$field]['name'])) {
@@ -49,32 +65,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_partner'])) {
         }
     }
 
-    // Handle arrays (facilities, benefits, services)
-    if (isset($_POST['facilities'])) {
-        $data['facilities'] = json_encode(array_map('sanitize_text_field', $_POST['facilities']));
-    }
-    if (isset($_POST['benefits'])) {
-        $data['benefits'] = json_encode(array_map('sanitize_text_field', $_POST['benefits']));
-    }
-    if (isset($_POST['services'])) {
-        $data['services'] = json_encode(array_map(function($service) {
-            return array_map('sanitize_text_field', $service);
-        }, $_POST['services']));
-    }
-
-    // Update partner
+    // Update partner in the database
     $wpdb->update(
-        $table_name,
-        $data,
-        ['id' => $partner_id],
-        array_fill(0, count($data), '%s'),
-        ['%d']
+        $table_name, // Database table
+        $data, // Data to update
+        ['id' => $partner_id], // Where condition
+        array_fill(0, count($data), '%s'), // Format for data (assuming all fields are strings, use '%s')
+        ['%d'] // Format for WHERE condition
     );
 
     // Redirect back to list with success message
     wp_redirect(add_query_arg('message', 'updated', admin_url('admin.php?page=partner-content-management')));
     exit;
 }
+
 
 // Decode JSON data for arrays
 $facilities = json_decode($partner->facilities ?? '[]', true) ?: [];
@@ -406,3 +410,4 @@ document.addEventListener('DOMContentLoaded', function() {
     text-align: center;
 }
 </style>
+

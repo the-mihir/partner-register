@@ -12,14 +12,14 @@ function partner_content_management_create_tables() {
     // Partners table
     $table_name = $wpdb->prefix . 'partners';
     
-    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
+    $sql = "CREATE TABLE $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         partner_name varchar(255) NOT NULL,
-        offer_heading varchar(255) NOT NULL,
         offering_area_name varchar(255) NOT NULL,
+        offer_heading varchar(255) NOT NULL,
         subheading text NOT NULL,
         tags text,
-        about_partner text,
+        about_partner text NOT NULL,
         box_heading_one varchar(255),
         box_text_one text,
         box_heading_two varchar(255),
@@ -35,14 +35,9 @@ function partner_content_management_create_tables() {
         offer_image_one varchar(255),
         offer_image_two varchar(255),
         benefits text,
-        services longtext,
-        hotel_name varchar(255),
-        address text,
-        offer_stay_total_night int(11),
-        price decimal(10,2),
-        hotel_info_text text,
+        services LONGTEXT, -- Store JSON or serialized data about services
         created_date datetime DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY  (id)
+        PRIMARY KEY (id)
     ) $charset_collate;";
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

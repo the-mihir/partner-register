@@ -69,6 +69,8 @@ function partner_content_management_enqueue_styles_scripts(){
     wp_enqueue_style('partner-content-management-style', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/css/bootstrap.min.css');
     wp_enqueue_style('partner-content-management-style', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/css/style.css');
     wp_enqueue_script('partner-content-management-script', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/js/script.js', array('jquery'), null, true);
+    // add font awesome cdn linkk
+    wp_enqueue_style('partner-content-management-font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 }
 add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_scripts');
 
