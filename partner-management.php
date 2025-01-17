@@ -1,68 +1,74 @@
 <?php
 /**
- * Plugin Name: Partner Management
- * Description: Manage partners with custom post types and shortcodes
- * Version: 1.0.0
- * Author: Your Name
- */
+* Plugin Name: Partner Content Management
+* Plugin URI: https://github.com/
+* Description: A plugin for managing partner Content.
+* Version: 1.0
+* Author: Mihir Das
+* Author URI: https://github.com/the-mihir
+* License: GPL2
+* License URI: https://www.gnu.org/licenses/gpl-2.0.html
+* text-domain: partner-content-management
+**/
 
-if (!defined('ABSPATH')) {
+
+if(!defined('ABSPATH')){
     exit;
 }
 
+// Define Plugin Constants
+define('PARTNER_CONTENT_MANAGEMENT_DIR', plugin_dir_path(__FILE__));
+define('PARTNER_CONTENT_MANAGEMENT_URL', plugin_dir_url(__FILE__));
 
 
+// Include necessary files
+require_once PARTNER_CONTENT_MANAGEMENT_DIR . 'includes/database.php';
+require_once PARTNER_CONTENT_MANAGEMENT_DIR . 'includes/admin-menu.php';
 
-// Define plugin constants
-define('PARTNER_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('PARTNER_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-// Activation Hook
-register_activation_hook(__FILE__, 'partner_plugin_activate');
+// Register activation hook
+register_activation_hook(__FILE__, 'partner_content_management_activate');
 
-function partner_plugin_activate() {
-    global $wpdb;
-    $charset_collate = $wpdb->get_charset_collate();
-    
-    $table_name = $wpdb->prefix . 'partners';
-    
-    $sql = "CREATE TABLE IF NOT EXISTS $table_name (
-        id mediumint(9) NOT NULL AUTO_INCREMENT,
-        company_name varchar(255) NOT NULL,
-        company_subheading text,
-        tags text,
-        about_partner text,
-        logo_url varchar(255),
-        created_date datetime DEFAULT CURRENT_TIMESTAMP,
-        PRIMARY KEY  (id)
-    ) $charset_collate;";
-    
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
+function partner_content_management_activate() {
+    // Create database tables
+    partner_content_management_create_tables();
 }
 
-// Deactivation Hook
-register_deactivation_hook(__FILE__, 'partner_plugin_deactivate');
 
-function partner_plugin_deactivate() {
-    // Cleanup code if needed
-}
 
-// Include required files after plugin is loaded
-function partner_plugin_init() {
-    require_once PARTNER_PLUGIN_PATH . 'includes/database.php';
-    require_once PARTNER_PLUGIN_PATH . 'includes/admin-menu.php';
-    require_once PARTNER_PLUGIN_PATH . 'includes/partner-form.php';
-    require_once PARTNER_PLUGIN_PATH . 'includes/shortcodes.php';
-}
-add_action('plugins_loaded', 'partner_plugin_init');
+// Handle partner deletion
+function handle_partner_deletion() {
+    if (isset($_GET['action']) && $_GET['action'] === 'delete' && isset($_GET['id'])) {
+        $partner_id = intval($_GET['id']);
+        
+        // Verify nonce
+        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'delete_partner_' . $partner_id)) {
+            wp_die('Security check failed');
+        }
 
-// Enqueue admin scripts and styles
-function partner_admin_enqueue_scripts($hook) {
-    // Only load on our plugin pages
-    if (strpos($hook, 'partner') !== false) {
-        wp_enqueue_style('partner-admin-style', PARTNER_PLUGIN_URL . 'assets/css/admin-style.css');
-        wp_enqueue_script('partner-admin-script', PARTNER_PLUGIN_URL . 'assets/js/admin-script.js', array('jquery'), '1.0.0', true);
+        // Delete the partner
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'partners';
+        $wpdb->delete(
+            $table_name,
+            ['id' => $partner_id],
+            ['%d']
+        );
+
+        // Redirect back to the partner list with a message
+        wp_redirect(add_query_arg('message', 'deleted', admin_url('admin.php?page=partner-content-management')));
+        exit;
     }
 }
-add_action('admin_enqueue_scripts', 'partner_admin_enqueue_scripts');
+add_action('admin_init', 'handle_partner_deletion');
+
+
+
+// Adding Style and Script
+function partner_content_management_enqueue_styles_scripts(){
+    wp_enqueue_style('partner-content-management-style', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/css/bootstrap.min.css');
+    wp_enqueue_style('partner-content-management-style', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/css/style.css');
+    wp_enqueue_script('partner-content-management-script', PARTNER_CONTENT_MANAGEMENT_URL . 'assets/js/script.js', array('jquery'), null, true);
+}
+add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_scripts');
+
