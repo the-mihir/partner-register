@@ -89,57 +89,57 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="partner_name" class="form-label">Partner Name *</label>
+                        <label for="partner_name" class="form-label fw-bold fs-5 mb-2">Partner Name</label>
                             <input type="text" class="form-control" id="partner_name" name="partner_name" 
                                    value="<?php echo esc_attr($partner->partner_name); ?>" required>
                         </div>
                         
                         <div class="col-md-6 mb-3">
-                            <label for="offering_area_name" class="form-label">Offering Area Name *</label>
+                        <label for="offering_area_name" class="form-label fw-bold fs-5 mb-2">Offering Area Name *</label>   
                             <input type="text" class="form-control" id="offering_area_name" name="offering_area_name" 
                                    value="<?php echo esc_attr($partner->offering_area_name); ?>" required>
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label for="subheading" class="form-label">Subheading *</label>
+                        <label for="subheading" class="form-label fw-bold fs-5 mb-2">Subheading *</label>
                             <textarea class="form-control" id="subheading" name="subheading" rows="2" required><?php echo esc_textarea($partner->subheading); ?></textarea>
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label for="tags" class="form-label">Tags</label>
+                        <label for="tags" class="form-label fw-bold fs-5 mb-2">Tags</label>
                             <textarea class="form-control" id="tags" name="tags" rows="2" 
                                 placeholder="Enter tags separated by commas (e.g., luxury, spa, beach)"><?php echo esc_textarea($partner->tags); ?></textarea>
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label for="about_partner" class="form-label">About Partner</label>
+                        <label for="about_partner" class="form-label fw-bold fs-5 mb-2">About Partner</label>
                             <textarea class="form-control" id="about_partner" name="about_partner" rows="4"><?php echo esc_textarea($partner->about_partner); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="box_heading_one" class="form-label">Box Heading One</label>
+                        <label for="box_heading_one" class="form-label fw-bold fs-5 mb-2">Box Heading One</label>
                             <input type="text" class="form-control" id="box_heading_one" name="box_heading_one" 
                                    value="<?php echo esc_attr($partner->box_heading_one); ?>">
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="box_heading_two" class="form-label">Box Heading Two</label>
+                        <label for="box_heading_two" class="form-label fw-bold fs-5 mb-2">Box Heading Two</label>
                             <input type="text" class="form-control" id="box_heading_two" name="box_heading_two" 
                                    value="<?php echo esc_attr($partner->box_heading_two); ?>">
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="box_text_one" class="form-label">Box Text One</label>
+                        <label for="box_text_one" class="form-label fw-bold fs-5 mb-2">Box Text One</label>
                             <textarea class="form-control" id="box_text_one" name="box_text_one" rows="3"><?php echo esc_textarea($partner->box_text_one); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="box_text_two" class="form-label">Box Text Two</label>
+                        <label for="box_text_two" class="form-label fw-bold fs-5 mb-2">Box Text Two</label>
                             <textarea class="form-control" id="box_text_two" name="box_text_two" rows="3"><?php echo esc_textarea($partner->box_text_two); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="hero_image_one" class="form-label">Hero Image One</label>
+                        <label for="hero_image_one" class="form-label fw-bold fs-5 mb-2">Hero Image One</label>
                             <?php if (!empty($partner->hero_image_one)): ?>
                                 <img src="<?php echo esc_url($partner->hero_image_one); ?>" style="max-width: 200px; display: block; margin-bottom: 10px;">
                             <?php endif; ?>
@@ -147,7 +147,7 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="hero_image_two" class="form-label">Hero Image Two</label>
+                        <label for="hero_image_two" class="form-label fw-bold fs-5 mb-2">Hero Image Two</label>
                             <?php if (!empty($partner->hero_image_two)): ?>
                                 <img src="<?php echo esc_url($partner->hero_image_two); ?>" style="max-width: 200px; display: block; margin-bottom: 10px;">
                             <?php endif; ?>
@@ -155,7 +155,7 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label class="form-label">Facilities *</label>
+                        <label class="form-label fw-bold fs-5 mb-2">Facilities *</label>
                             <div id="facilities-container">
                                 <?php foreach ($facilities as $facility): ?>
                                     <div class="mb-2">
@@ -174,34 +174,34 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label for="offering_text" class="form-label">Offering Text</label>
+                        <label class="form-label fw-bold fs-5 mb-2">Offering Text</label>
                             <textarea class="form-control" id="offering_text" name="offering_text" rows="3"><?php echo esc_textarea($partner->offering_text); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_box_heading_one" class="form-label">Offer Box Heading One</label>
+                        <label for="offer_box_heading_one" class="form-label fw-bold fs-5 mb-2">Offer Box Heading One</label>
                             <input type="text" class="form-control" id="offer_box_heading_one" name="offer_box_heading_one" 
                                    value="<?php echo esc_attr($partner->offer_box_heading_one); ?>">
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_box_heading_two" class="form-label">Offer Box Heading Two</label>
+                        <label for="offer_box_heading_two" class="form-label fw-bold fs-5 mb-2">Offer Box Heading Two</label>
                             <input type="text" class="form-control" id="offer_box_heading_two" name="offer_box_heading_two" 
                                    value="<?php echo esc_attr($partner->offer_box_heading_two); ?>">
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_box_text_one" class="form-label">Offer Box Text One</label>
+                        <label for="offer_box_text_one" class="form-label fw-bold fs-5 mb-2">Offer Box Text One</label>
                             <textarea class="form-control" id="offer_box_text_one" name="offer_box_text_one" rows="3"><?php echo esc_textarea($partner->offer_box_text_one); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_box_text_two" class="form-label">Offer Box Text Two</label>
+                        <label for="offer_box_text_two" class="form-label fw-bold fs-5 mb-2">Offer Box Text Two</label>
                             <textarea class="form-control" id="offer_box_text_two" name="offer_box_text_two" rows="3"><?php echo esc_textarea($partner->offer_box_text_two); ?></textarea>
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_image_one" class="form-label">Offer Image One</label>
+                        <label for="offer_image_one" class="form-label fw-bold fs-5 mb-2">Offer Image One</label>
                             <?php if (!empty($partner->offer_image_one)): ?>
                                 <img src="<?php echo esc_url($partner->offer_image_one); ?>" style="max-width: 200px; display: block; margin-bottom: 10px;">
                             <?php endif; ?>
@@ -209,7 +209,7 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="offer_image_two" class="form-label">Offer Image Two</label>
+                        <label for="offer_image_two" class="form-label fw-bold fs-5 mb-2">Offer Image Two</label>
                             <?php if (!empty($partner->offer_image_two)): ?>
                                 <img src="<?php echo esc_url($partner->offer_image_two); ?>" style="max-width: 200px; display: block; margin-bottom: 10px;">
                             <?php endif; ?>
@@ -217,7 +217,7 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label class="form-label">Benefits</label>
+                        <label class="form-label fw-bold fs-5 mb-2">Benefits</label>
                             <div id="benefits-container">
                                 <?php foreach ($benefits as $benefit): ?>
                                     <div class="mb-2">
@@ -236,7 +236,7 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-12 mb-3">
-                            <label class="form-label">Services</label>
+                        <label class="form-label fw-bold fs-5 mb-2">Services</label>
                             <div id="services-container">
                                 <?php foreach ($services as $index => $service): ?>
                                     <div class="service-group border p-3 mb-3">
@@ -247,21 +247,21 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                                                 </button>
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Service Name *</label>
+                                                <label class="form-label fw-bold fs-5 mb-2">Service Name *</label>
                                                 <input type="text" class="form-control" name="services[<?php echo $index; ?>][name]" 
                                                        value="<?php echo esc_attr($service['name'] ?? ''); ?>" required>
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Service Heading *</label>
+                                                <label class="form-label fw-bold fs-5 mb-2">Service Heading *</label>
                                                 <input type="text" class="form-control" name="services[<?php echo $index; ?>][heading]" 
                                                        value="<?php echo esc_attr($service['heading'] ?? ''); ?>" required>
                                             </div>
                                             <div class="col-md-12 mb-3">
-                                                <label class="form-label">Address</label>
+                                                <label class="form-label fw-bold fs-5 mb-2">Address</label>
                                                 <textarea class="form-control" name="services[<?php echo $index; ?>][address]" rows="2"><?php echo esc_textarea($service['address'] ?? ''); ?></textarea>
                                             </div>
                                             <div class="col-md-12 mb-3">
-                                                <label class="form-label">Facilities</label>
+                                                <label class="form-label fw-bold fs-5 mb-2">Facilities</label>
                                                 <textarea class="form-control" name="services[<?php echo $index; ?>][facilities]" rows="2"><?php echo esc_textarea($service['facilities'] ?? ''); ?></textarea>
                                             </div>
                                             <div class="col-md-6 mb-3">
@@ -340,27 +340,27 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Service Name</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Service Name</label>
                         <input type="text" class="form-control" name="services[${serviceCount}][name]">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Service Heading</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Service Heading</label>
                         <input type="text" class="form-control" name="services[${serviceCount}][heading]">
                     </div>
                     <div class="col-md-12 mb-3">
-                        <label class="form-label">Address</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Address</label>
                         <textarea class="form-control" name="services[${serviceCount}][address]" rows="2"></textarea>
                     </div>
                     <div class="col-md-12 mb-3">
-                        <label class="form-label">Facilities</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Facilities</label>
                         <textarea class="form-control" name="services[${serviceCount}][facilities]" rows="2"></textarea>
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label class="form-label">Price</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Price</label>
                         <input type="number" step="0.01" class="form-control" name="services[${serviceCount}][price]">
                     </div>
                     <div class="col-md-12 mb-3">
-                        <label class="form-label">Service Brief</label>
+                        <label class="form-label fw-bold fs-5 mb-2 ">Service Brief</label>
                         <textarea class="form-control" name="services[${serviceCount}][brief]" rows="3"></textarea>
                     </div>
                 </div>

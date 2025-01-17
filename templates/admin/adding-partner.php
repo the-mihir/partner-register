@@ -42,164 +42,174 @@
         }
     } ?>
 
-    <form method="post" class="mt-4" enctype="multipart/form-data">
-        <div class="container-fluid border rounded-3 p-4">
-            <div class="row">
+    <form method="post" class="mt-4 border rounded-3 p-4" enctype="multipart/form-data">
+        <div class="container-fluid p-4">
+            <div class="row g-4">
                 <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="partner_name" class="form-label">Partner Name *</label>
-                            <input type="text" class="form-control" id="partner_name" name="partner_name" required>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="partner_name" class="form-label fw-bold fs-5 mb-2">Partner Name</label>
+                            <input type="text" class="form-control form-control-lg" id="partner_name" name="partner_name" required>
                         </div>
                         
-                        <div class="col-md-6 mb-3">
-                            <label for="offering_area_name" class="form-label">Offering Area Name *</label>
-                            <input type="text" class="form-control" id="offering_area_name" name="offering_area_name" required>
+                        <div class="col-md-6">
+                            <label for="offering_area_name" class="form-label fw-bold fs-5 mb-2">Offering Area Name</label>
+                            <input type="text" class="form-control form-control-lg" id="offering_area_name" name="offering_area_name" required>
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label for="subheading" class="form-label">Subheading *</label>
-                            <textarea class="form-control" id="subheading" name="subheading" rows="2" required></textarea>
+                        <div class="col-md-12">
+                            <label for="subheading" class="form-label fw-bold fs-5 mb-2">Subheading</label>
+                            <textarea class="form-control form-control-lg" id="subheading" name="subheading" rows="2" required></textarea>
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label for="tags" class="form-label">Tags</label>
-                            <textarea class="form-control" id="tags" name="tags" rows="2" 
+                        <div class="col-md-12">
+                            <label for="tags" class="form-label fw-bold fs-5 mb-2">Tags</label>
+                            <textarea class="form-control form-control-lg" id="tags" name="tags" rows="2" required
                                 placeholder="Enter tags separated by commas (e.g., luxury, spa, beach)"></textarea>
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label for="about_partner" class="form-label">About Partner</label>
-                            <textarea class="form-control" id="about_partner" name="about_partner" rows="4"></textarea>
+                        <div class="col-md-12">
+                            <label for="about_partner" class="form-label fw-bold fs-5 mb-2">About Partner</label>
+                            <textarea class="form-control form-control-lg" id="about_partner" name="about_partner" rows="4" required></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="box_heading_one" class="form-label">Box Heading One</label>
-                            <input type="text" class="form-control" id="box_heading_one" name="box_heading_one">
+                        <div class="col-md-6">
+                            <label for="box_heading_one" class="form-label fw-bold fs-5 mb-2">Box Heading One</label>
+                            <input type="text" class="form-control form-control-lg" id="box_heading_one" name="box_heading_one" required>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="box_heading_two" class="form-label">Box Heading Two</label>
-                            <input type="text" class="form-control" id="box_heading_two" name="box_heading_two">
+                        <div class="col-md-6">
+                            <label for="box_heading_two" class="form-label fw-bold fs-5 mb-2">Box Heading Two</label>
+                            <input type="text" class="form-control form-control-lg" id="box_heading_two" name="box_heading_two" required>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="box_text_one" class="form-label">Box Text One</label>
-                            <textarea class="form-control" id="box_text_one" name="box_text_one" rows="3"></textarea>
+                        <div class="col-md-6">
+                            <label for="box_text_one" class="form-label fw-bold fs-5 mb-2">Box Text One</label>
+                            <textarea class="form-control form-control-lg" id="box_text_one" name="box_text_one" rows="3" required></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="box_text_two" class="form-label">Box Text Two</label>
-                            <textarea class="form-control" id="box_text_two" name="box_text_two" rows="3"></textarea>
+                        <div class="col-md-6">
+                            <label for="box_text_two" class="form-label fw-bold fs-5 mb-2">Box Text Two</label>
+                            <textarea class="form-control form-control-lg" id="box_text_two" name="box_text_two" rows="3" required></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="hero_image_one" class="form-label">Hero Image One *</label>
-                            <input type="file" class="form-control" id="hero_image_one" name="hero_image_one" accept="image/*" required>
+                        <div class="col-md-6">
+                            <label for="hero_image_one" class="form-label fw-bold fs-5 mb-2">Hero Image One *</label>
+                            <input type="file" class="form-control form-control-lg" id="hero_image_one" name="hero_image_one" accept="image/*" required>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="hero_image_two" class="form-label">Hero Image Two</label>
-                            <input type="file" class="form-control" id="hero_image_two" name="hero_image_two" accept="image/*">
+                        <div class="col-md-6">
+                            <label for="hero_image_two" class="form-label fw-bold fs-5 mb-2">Hero Image Two</label>
+                            <input type="file" class="form-control form-control-lg" id="hero_image_two" name="hero_image_two" accept="image/*">
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">Facilities *</label>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold fs-5 mb-2">Facilities</label>
                             <div id="facilities-container">
-                                <div class="mb-2">
-                                    <div class="input-group">
+                                <div class="mb-3">
+                                    <div class="input-group input-group-lg">
                                         <input type="text" class="form-control" name="facilities[]" required>
-                                        <button type="button" class="btn btn-danger remove-field">
+                                        <button type="button" class="btn btn-danger btn-lg remove-field">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary add-facility mt-2">
+                            <button type="button" class="btn btn-primary btn-lg add-facility">
                                 <i class="fas fa-plus"></i> Add Facility
                             </button>
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label for="offering_text" class="form-label">Offering Text</label>
-                            <textarea class="form-control" id="offering_text" name="offering_text" rows="3"></textarea>
+                        <div class="col-md-12">
+                            <label for="offering_text" class="form-label fw-bold fs-5 mb-2">Offering Text</label>
+                            <textarea class="form-control form-control-lg" id="offering_text" name="offering_text" rows="3"></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_box_heading_one" class="form-label">Offer Box Heading One</label>
-                            <input type="text" class="form-control" id="offer_box_heading_one" name="offer_box_heading_one">
+                        <div class="col-md-6">
+                            <label for="offer_box_heading_one" class="form-label fw-bold fs-5 mb-2">Offer Box Heading One</label>
+                            <input type="text" class="form-control form-control-lg" id="offer_box_heading_one" name="offer_box_heading_one">
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_box_heading_two" class="form-label">Offer Box Heading Two</label>
-                            <input type="text" class="form-control" id="offer_box_heading_two" name="offer_box_heading_two">
+                        <div class="col-md-6">
+                            <label for="offer_box_heading_two" class="form-label fw-bold fs-5 mb-2">Offer Box Heading Two</label>
+                            <input type="text" class="form-control form-control-lg" id="offer_box_heading_two" name="offer_box_heading_two">
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_box_text_one" class="form-label">Offer Box Text One</label>
-                            <textarea class="form-control" id="offer_box_text_one" name="offer_box_text_one" rows="3"></textarea>
+                        <div class="col-md-6">
+                            <label for="offer_box_text_one" class="form-label fw-bold fs-5 mb-2">Offer Box Text One</label>
+                            <textarea class="form-control form-control-lg" id="offer_box_text_one" name="offer_box_text_one" rows="3"></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_box_text_two" class="form-label">Offer Box Text Two</label>
-                            <textarea class="form-control" id="offer_box_text_two" name="offer_box_text_two" rows="3"></textarea>
+                        <div class="col-md-6">
+                            <label for="offer_box_text_two" class="form-label fw-bold fs-5 mb-2">Offer Box Text Two</label>
+                            <textarea class="form-control form-control-lg" id="offer_box_text_two" name="offer_box_text_two" rows="3"></textarea>
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_image_one" class="form-label">Offer Image One</label>
-                            <input type="file" class="form-control" id="offer_image_one" name="offer_image_one" accept="image/*">
+                        <div class="col-md-6">
+                            <label for="offer_image_one" class="form-label fw-bold fs-5 mb-2">Offer Image One</label>
+                            <input type="file" class="form-control form-control-lg" id="offer_image_one" name="offer_image_one" accept="image/*">
                         </div>
 
-                        <div class="col-md-6 mb-3">
-                            <label for="offer_image_two" class="form-label">Offer Image Two</label>
-                            <input type="file" class="form-control" id="offer_image_two" name="offer_image_two" accept="image/*">
+                        <div class="col-md-6">
+                            <label for="offer_image_two" class="form-label fw-bold fs-5 mb-2">Offer Image Two</label>
+                            <input type="file" class="form-control form-control-lg" id="offer_image_two" name="offer_image_two" accept="image/*">
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">Benefits</label>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold fs-5 mb-2">Benefits</label>
                             <div id="benefits-container">
-                                <div class="mb-2">
-                                    <input type="text" class="form-control" name="benefits[]">
+                                <div class="mb-3">
+                                    <div class="input-group input-group-lg">
+                                        <input type="text" class="form-control" name="benefits[]">
+                                        <button type="button" class="btn btn-danger btn-lg remove-field">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary add-benefit mt-2">
+                            <button type="button" class="btn btn-primary btn-lg add-benefit">
                                 <i class="fas fa-plus"></i> Add Benefit
                             </button>
                         </div>
 
-                        <div class="col-md-12 mb-3">
-                            <label class="form-label">Services</label>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold fs-5 mb-2">Services</label>
                             <div id="services-container">
                                 <div class="service-group border p-3 mb-3">
                                     <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <label class="form-label">Service Name *</label>
-                                            <input type="text" class="form-control" name="services[0][name]" required>
+                                        <div class="col-12 text-end mb-2">
+                                            <button type="button" class="btn btn-danger btn-lg remove-service">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
                                         </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label class="form-label">Service Heading *</label>
-                                            <input type="text" class="form-control" name="services[0][heading]" required>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold fs-5 mb-2">Service Name</label>
+                                            <input type="text" class="form-control form-control-lg" name="services[0][name]">
                                         </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-label">Address</label>
-                                            <textarea class="form-control" name="services[0][address]" rows="2"></textarea>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold fs-5 mb-2">Service Heading</label>
+                                            <input type="text" class="form-control form-control-lg" name="services[0][heading]">
                                         </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-label">Facilities</label>
-                                            <textarea class="form-control" name="services[0][facilities]" rows="2"></textarea>
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bold fs-5 mb-2">Address</label>
+                                            <textarea class="form-control form-control-lg" name="services[0][address]" rows="2"></textarea>
                                         </div>
-                                        <div class="col-md-6 mb-3">
-                                            <label class="form-label">Price</label>
-                                            <input type="number" step="0.01" class="form-control" name="services[0][price]">
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bold fs-5 mb-2">Facilities</label>
+                                            <textarea class="form-control form-control-lg" name="services[0][facilities]" rows="2"></textarea>
                                         </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-label">Service Brief</label>
-                                            <textarea class="form-control" name="services[0][brief]" rows="3"></textarea>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-bold fs-5 mb-2">Price</label>
+                                            <input type="number" step="0.01" class="form-control form-control-lg" name="services[0][price]">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label fw-bold fs-5 mb-2">Service Brief</label>
+                                            <textarea class="form-control form-control-lg" name="services[0][brief]" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary add-service mt-2">
+                            <button type="button" class="btn btn-primary btn-lg add-service">
                                 <i class="fas fa-plus"></i> Add Service
                             </button>
                         </div>
@@ -207,10 +217,10 @@
                         
                     </div>
 
-                    <div class="mt-4 text-end">
-                    <a href="<?php echo admin_url('admin.php?page=partner-content-management'); ?>" class="button button-secondary">Cancel</a>
+                    <div class="mt-5 text-end">
+                        <a href="<?php echo admin_url('admin.php?page=partner-content-management'); ?>" 
+                           class="button button-secondary me-2">Cancel</a>
                         <button type="submit" name="submit" class="button button-primary">Add New Partner</button>
-                        
                     </div>
                 </div>
             </div>
@@ -224,10 +234,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.add-facility').addEventListener('click', function() {
         const container = document.getElementById('facilities-container');
         const newField = `
-            <div class="mb-2">
-                <div class="input-group">
+            <div class="mb-3">
+                <div class="input-group input-group-lg">
                     <input type="text" class="form-control" name="facilities[]" required>
-                    <button type="button" class="btn btn-danger remove-field">
+                    <button type="button" class="btn btn-danger btn-lg remove-field">
                         <i class="fas fa-minus"></i>
                     </button>
                 </div>
@@ -240,10 +250,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('.add-benefit').addEventListener('click', function() {
         const container = document.getElementById('benefits-container');
         const newField = `
-            <div class="mb-2">
-                <div class="input-group">
+            <div class="mb-3">
+                <div class="input-group input-group-lg">
                     <input type="text" class="form-control" name="benefits[]">
-                    <button type="button" class="btn btn-danger remove-field">
+                    <button type="button" class="btn btn-danger btn-lg remove-field">
                         <i class="fas fa-minus"></i>
                     </button>
                 </div>
@@ -260,33 +270,33 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="service-group border p-3 mb-3">
                 <div class="row">
                     <div class="col-12 text-end mb-2">
-                        <button type="button" class="btn btn-danger remove-service">
+                        <button type="button" class="btn btn-danger btn-lg remove-service">
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Service Name</label>
-                        <input type="text" class="form-control" name="services[${serviceCount}][name]">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5 mb-2">Service Name</label>
+                        <input type="text" class="form-control form-control-lg" name="services[${serviceCount}][name]">
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Service Heading</label>
-                        <input type="text" class="form-control" name="services[${serviceCount}][heading]">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5 mb-2">Service Heading</label>
+                        <input type="text" class="form-control form-control-lg" name="services[${serviceCount}][heading]">
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-label">Address</label>
-                        <textarea class="form-control" name="services[${serviceCount}][address]" rows="2"></textarea>
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold fs-5 mb-2">Address</label>
+                        <textarea class="form-control form-control-lg" name="services[${serviceCount}][address]" rows="2"></textarea>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-label">Facilities</label>
-                        <textarea class="form-control" name="services[${serviceCount}][facilities]" rows="2"></textarea>
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold fs-5 mb-2">Facilities</label>
+                        <textarea class="form-control form-control-lg" name="services[${serviceCount}][facilities]" rows="2"></textarea>
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label">Price</label>
-                        <input type="number" step="0.01" class="form-control" name="services[${serviceCount}][price]">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold fs-5 mb-2">Price</label>
+                        <input type="number" step="0.01" class="form-control form-control-lg" name="services[${serviceCount}][price]">
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label class="form-label">Service Brief</label>
-                        <textarea class="form-control" name="services[${serviceCount}][brief]" rows="3"></textarea>
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold fs-5 mb-2">Service Brief</label>
+                        <textarea class="form-control form-control-lg" name="services[${serviceCount}][brief]" rows="3"></textarea>
                     </div>
                 </div>
             </div>
