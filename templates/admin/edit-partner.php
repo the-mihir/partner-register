@@ -22,6 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_partner'])) {
     $data = array(
         'partner_name' => sanitize_text_field($_POST['partner_name']),
         'offering_area_name' => sanitize_text_field($_POST['offering_area_name']),
+        'offer_heading' => sanitize_text_field($_POST['offer_heading']),
+        'offer_heading' => sanitize_text_field($_POST['offer_heading']),
         'subheading' => sanitize_textarea_field($_POST['subheading']),
         'tags' => sanitize_textarea_field($_POST['tags']),
         'about_partner' => sanitize_textarea_field($_POST['about_partner']),
@@ -101,8 +103,17 @@ $services = json_decode($partner->services ?? '[]', true) ?: [];
                         </div>
 
                         <div class="col-md-12 mb-3">
-                        <label for="subheading" class="form-label fw-bold fs-5 mb-2">Subheading *</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                            <label for="offer_heading" class="form-label fw-bold fs-5 mb-2">Offer Heading *</label>
+                            <input type="text" class="form-control" id="offer_heading" name="offer_heading" 
+                                   value="<?php echo esc_attr($partner->offer_heading); ?>" required>
+                            </div>
+                            <div class="col-md-6">
+                            <label for="subheading" class="form-label fw-bold fs-5 mb-2">Subheading *</label>
                             <textarea class="form-control" id="subheading" name="subheading" rows="2" required><?php echo esc_textarea($partner->subheading); ?></textarea>
+                            </div>
+                        </div>
                         </div>
 
                         <div class="col-md-12 mb-3">

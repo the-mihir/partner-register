@@ -15,6 +15,7 @@ function partner_content_management_create_tables() {
     $sql = "CREATE TABLE IF NOT EXISTS $table_name (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
         partner_name varchar(255) NOT NULL,
+        offer_heading varchar(255) NOT NULL,
         offering_area_name varchar(255) NOT NULL,
         subheading text NOT NULL,
         tags text,
