@@ -74,3 +74,9 @@ function partner_content_management_enqueue_styles_scripts(){
 }
 add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_scripts');
 
+
+
+// This is for test commitment 
+//  i want to move some one else 
+
+
