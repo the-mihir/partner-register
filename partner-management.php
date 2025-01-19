@@ -80,3 +80,8 @@ add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_s
 //  i want to move some one else 
 
 
+
+//I want to lern PHP 
+// I have to make some code 
+// I have to make more money for raching my life 
+
