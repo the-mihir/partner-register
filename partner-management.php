@@ -85,3 +85,7 @@ add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_s
 // I have to make some code 
 // I have to make more money for raching my life 
 
+// This is another git push for github added 
+// you have make sure that your code is running well
+
+
