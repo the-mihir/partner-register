@@ -87,5 +87,5 @@ add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_s
 
 // This is another git push for github added 
 // you have make sure that your code is running well
-
+// Thia is another coomit for change 
 
