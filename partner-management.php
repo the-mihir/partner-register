@@ -89,3 +89,5 @@ add_action('admin_enqueue_scripts', 'partner_content_management_enqueue_styles_s
 // you have make sure that your code is running well
 // Thia is another coomit for change 
 
+// Let's Finish this work and make it more nice and fine, as per client want to make this plugin
+
